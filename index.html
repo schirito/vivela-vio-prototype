@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bandeja Legal</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E7C74'/%3E%3Ctext x='16' y='22' font-family='Arial,Helvetica,sans-serif' font-size='17' font-weight='700' fill='white' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <img src="assets/logo-vivela.png" alt="Vívela" />
+    </div>
+    <nav class="sidebar__nav">
+      <div class="nav-section-label">Menú</div>
+      <button class="nav-item active" data-nav="bandeja" id="navBandeja">
+        <svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/><path d="M5.5 10v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/><path d="M9.5 20v-6h5v6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg>
+        Mi bandeja
+      </button>
+      <button class="nav-item disabled" title="Próximamente en este prototipo">
+        <svg viewBox="0 0 24 24"><path d="M3.5 8.5A2 2 0 0 1 5.5 6.5H9l1.7 2H18.5a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5.5a2 2 0 0 1-2-2Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg>
+        <span class="nav-item__text">Todas las solicitudes<span class="nav-item__tag">Próximamente</span></span>
+      </button>
+      <button class="nav-item disabled" title="Próximamente en este prototipo">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v4H4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/><path d="M5 8v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/><path d="M10 12.5h4" stroke-linecap="round" stroke-width="1.8"/></svg>
+        <span class="nav-item__text">Expediente documental<span class="nav-item__tag">Próximamente</span></span>
+      </button>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <span class="topbar__title" id="topbarTitle">Mi bandeja</span>
+      <div class="topbar__right">
+        <div style="position:relative;">
+          <button class="icon-btn" id="notifBtn" aria-label="Notificaciones">
+            <svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0c0 4 1.5 5.5 1.5 5.5H4.5S6 13 6 9Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/><path d="M9.5 17a2.5 2.5 0 0 0 5 0" stroke-linecap="round" stroke-width="1.8"/></svg>
+            <span class="badge-dot">3</span>
+          </button>
+          <div class="dropdown-panel" id="notifPanel" hidden style="width:300px;">
+            <div class="dropdown-panel__header">
+              <div class="dropdown-panel__title">Notificaciones</div>
+            </div>
+            <div class="notif-item">
+              <div class="notif-item__title">Torres del Malecón pasó a "En proceso"</div>
+              <div class="notif-item__time">Hace 25 min</div>
+            </div>
+            <div class="notif-item">
+              <div class="notif-item__title">Comercial subsanó la observación de Condominio del Valle</div>
+              <div class="notif-item__time">Hace 2 h</div>
+            </div>
+            <div class="notif-item">
+              <div class="notif-item__title">Nuevo documento vigente en el expediente de Los Andes</div>
+              <div class="notif-item__time">Ayer</div>
+            </div>
+          </div>
+        </div>
+        <div class="user-block">
+          <div class="user-info">
+            <span class="user-name">María Fernanda Ríos</span>
+            <span class="user-role">Analista Legal</span>
+          </div>
+          <div style="position:relative;">
+            <button class="avatar-btn" id="avatarBtn" aria-label="Cuenta">MF</button>
+            <div class="dropdown-panel" id="userPanel" hidden style="width:200px;">
+              <button class="menu-item" id="viewProfileBtn">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2" stroke-width="1.8"/><path d="M5 20c1-3.5 4-5 7-5s6 1.5 7 5" stroke-linecap="round" stroke-width="1.8"/></svg>
+                Ver perfil
+              </button>
+              <div class="menu-divider"></div>
+              <button class="menu-item danger" id="logoutBtn">
+                <svg viewBox="0 0 24 24"><path d="M9 21H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/><path d="M16 17l5-5-5-5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/><path d="M21 12H9" stroke-linecap="round" stroke-width="1.8"/></svg>
+                Cerrar sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- ============ VIEW: BANDEJA ============ -->
+      <section class="view" id="view-bandeja">
+        <div class="page-head">
+          <h1>Mi bandeja</h1>
+        </div>
+
+        <div class="filters-row">
+          <div class="select-field">
+            <span class="field-label">Tipo de documento</span>
+            <button class="select-trigger" id="docTypeTrigger">
+              <span id="docTypeValue">RUC</span>
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </button>
+            <ul class="select-menu" id="docTypeMenu" hidden>
+              <li data-value="RUC" class="selected">RUC</li>
+              <li data-value="DNI">DNI</li>
+            </ul>
+          </div>
+          <div class="search-field">
+            <span class="field-label">Buscar cliente</span>
+            <div class="search-box">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke-width="1.8"/><path d="m21 21-4.3-4.3" stroke-linecap="round" stroke-width="1.8"/></svg>
+              <input id="searchInput" placeholder="Busca el cliente por razón social" autocomplete="off" />
+            </div>
+            <ul class="search-results" id="searchResults" hidden></ul>
+          </div>
+        </div>
+
+        <div class="status-tabs" id="statusTabs"></div>
+
+        <div class="table-card">
+          <div class="table-scroll">
+            <table class="data-table">
+              <colgroup>
+                <col style="width:16%">
+                <col style="width:19%">
+                <col style="width:10%">
+                <col style="width:14%">
+                <col style="width:12%">
+                <col style="width:12%">
+                <col style="width:12%">
+                <col style="width:5%">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Nombre de proyecto</th>
+                  <th>RUC / Razón social</th>
+                  <th>Estado</th>
+                  <th>Instancia</th>
+                  <th>Fecha de registro</th>
+                  <th>Días transcurridos</th>
+                  <th>Fecha de actualización</th>
+                  <th class="col-link"></th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+          <div class="table-footer">
+            <span class="table-footer__info" id="paginationInfo"></span>
+            <div class="pagination" id="pagination"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ VIEW: INFORME LEGAL ============ -->
+      <section class="view" id="view-informe" hidden>
+        <button class="back-link" id="backBtn">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+          Mi bandeja
+        </button>
+        <div class="page-head">
+          <h1>Informe Legal</h1>
+          <div class="subtitle" id="informeSubtitle"></div>
+        </div>
+
+        <div id="uploadZoneWrap"></div>
+
+        <div class="tabs" id="informeTabs">
+          <button class="tab active" data-tab="subir">Subir Informe Legal</button>
+          <button class="tab" data-tab="checklist">Checklist</button>
+        </div>
+
+        <div class="tab-panel" id="panel-subir">
+          <div class="field">
+            <span class="field-label">Excepciones</span>
+            <div class="multiselect">
+              <button class="multiselect-trigger" id="exceptionsTrigger">
+                <span class="multiselect-trigger__placeholder" id="exceptionsPlaceholder">Seleccionar excepciones</span>
+                <svg class="multiselect-trigger__chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+              </button>
+              <div class="multiselect-menu" id="exceptionsMenu" hidden></div>
+            </div>
+          </div>
+
+          <label class="checkbox-row">
+            <input type="checkbox" id="observacionesCheckbox" />
+            <span>
+              Aprobar con observaciones
+              <span class="hint">El informe se enviará a Comercial para su subsanación.</span>
+            </span>
+          </label>
+
+          <div class="field" style="max-width:100%;">
+            <span class="field-label">Comentarios</span>
+            <textarea id="commentBox" placeholder="Escribe un comentario para Comercial…"></textarea>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="panel-checklist" hidden>
+          <ul class="checklist" id="checklistList"></ul>
+        </div>
+
+        <div class="informe-footer">
+          <button class="btn btn--outline" disabled>Cancelar</button>
+          <button class="btn btn--primary" id="saveBtn">Generar contrato</button>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div id="toast-region"></div>
+<script src="script.js"></script>
+</body>
+</html>
