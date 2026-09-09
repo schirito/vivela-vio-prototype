@@ -1,65 +1,39 @@
-# Bandeja Legal — Vívela (prototipo)
+# Vìvela — Prototipo Informe legal / Contratos
 
-Prototipo interactivo del rol Legal: bandeja de informes con filtros, tabs de
-estado y tabla paginada, más el flujo de Informe Legal (carga de documento,
-excepciones, checklist y generación de contrato o envío a Comercial).
+Sitio estático, sin frameworks ni dependencias de npm. Portado del prototipo original conservando diseño, textos, estados e interacciones.
 
-Es un sitio **100% estático**: HTML, CSS y JavaScript puro, sin frameworks,
-sin build ni dependencias de npm. Los datos (clientes, estados, checklist)
-viven en memoria del navegador — no hay backend ni persistencia real.
-
-## Estructura del proyecto
+## Estructura
 
 ```
-.
+vivela-vio-prototype/
 ├── index.html          punto de entrada
-├── style.css           todos los estilos (tema claro/oscuro incluido)
-├── script.js           toda la lógica (datos, tabla, tabs, buscador, checklist, flujo de guardado)
-├── assets/
-│   └── logo-vivela.png logo de Vívela usado en el sidebar
-├── netlify.toml         configuración de despliegue para Netlify
-└── .gitignore
+├── style.css           tokens Vìvela + kit Minimals + estilos de página
+├── script.js           estado e interacciones (JS vanilla)
+├── netlify.toml        publish = "."
+└── assets/
+    ├── vivela-logo.svg
+    └── fonts/          Public Sans (400–800)
 ```
 
-## Previsualizar en local
+## Local
 
-No requiere instalación. Cualquiera de estas opciones funciona:
+Abrir `index.html` directamente, o servirlo:
 
-- Abrir `index.html` directamente con doble clic en el navegador.
-- O, si prefieres servirlo por HTTP (recomendado para evitar restricciones
-  de algunos navegadores con `file://`):
-
-  ```bash
-  python3 -m http.server 8000
-  # luego abre http://localhost:8000
-  ```
-
-## Subir a GitHub
-
-```bash
-git init
-git add .
-git commit -m "Prototipo Bandeja Legal"
-git branch -M main
-git remote add origin https://github.com/<tu-usuario>/<tu-repo>.git
-git push -u origin main
+```
+npx serve .
 ```
 
-## Desplegar en Netlify
+## Netlify
 
-1. Entra a [app.netlify.com](https://app.netlify.com) → **Add new site → Import an existing project**.
-2. Conecta tu cuenta de GitHub y selecciona este repositorio.
-3. Configuración de build (Netlify puede autodetectarla gracias a `netlify.toml`, pero por si la pide manualmente):
-   - **Build command:** (dejar vacío)
-   - **Publish directory:** `.`
-4. Deploy site. Netlify sirve `index.html` automáticamente en la raíz — no hace falta ninguna regla de redirect porque el prototipo es una sola página.
+1. Subir esta carpeta a un repositorio de GitHub.
+2. En Netlify: **Add new site → Import an existing project** y elegir el repo.
+3. Build command: vacío. Publish directory: `.` (ya definido en `netlify.toml`).
 
-Cada `git push` a la rama conectada vuelve a desplegar el sitio automáticamente.
+## Recursos externos (CDN)
 
-## Notas
+- Iconify (`code.iconify.design`) para los iconos `solar:*` y `eva:*`.
+- Google Fonts para Barlow / DM Sans / Be Vietnam Pro. Public Sans se sirve localmente desde `assets/fonts/`.
 
-- La tipografía (Public Sans) se carga desde Google Fonts vía `<link>` en
-  `index.html`; es la única solicitud a un servicio externo que hace el sitio.
-- El diseño y el comportamiento son idénticos al prototipo original: esta
-  reorganización solo separó el HTML, CSS y JS en archivos independientes y
-  movió el logo de un `data:` URI embebido a un archivo real en `assets/`.
+## Alcance funcional
+
+Prototipo de front-end sin backend: la carga de documento usa el input de archivo del navegador y vive en memoria durante la sesión; las observaciones y la validación no se persisten.
